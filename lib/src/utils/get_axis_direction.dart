@@ -24,10 +24,13 @@ AxisDirection getAxisDirection({
       final spaceAvailableRight = size.width - rightTargetEdge - margin.right;
 
       final targetHeightRadius = targetSize.height / 2;
+      final topTargetEdge = target.dy - targetHeightRadius;
       final bottomTargetEdge = target.dy + targetHeightRadius;
-      final spaceAvailableBelow =
-          size.height - bottomTargetEdge - margin.bottom;
-      if (spaceAvailableBelow <= 20) return AxisDirection.up;
+      final spaceAvailableAbove = topTargetEdge - margin.top;
+      final spaceAvailableBelow = size.height - bottomTargetEdge - margin.bottom;
+
+      if (spaceAvailableAbove < targetSize.height) return AxisDirection.down;
+      if (spaceAvailableBelow < targetSize.height) return AxisDirection.up;
 
       // LTE = leftTargetEdge
       // |margin.L          child+offset            LTE                        |
