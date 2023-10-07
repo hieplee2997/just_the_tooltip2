@@ -686,77 +686,81 @@ abstract class JustTheTooltip2State<T> extends State<JustTheInterface2>
       showWhenUnlinked: widget.showWhenUnlinked,
       offset: targetInformation.offsetToTarget,
       link: _layerLink,
-      child: FadeTransition(
-        opacity: CurvedAnimation(
-          parent: _animationController,
-          curve: widget.curve,
-          reverseCurve: widget.reverseCurve,
-        ),
-        child: Directionality(
-          textDirection: widget.textDirection,
-          child: Builder(
-            builder: (context) {
-              final scrollController = widget.scrollController;
-              final wrappedChild = Material(
-                type: MaterialType.transparency,
-                child: widget.content,
-              );
+      child: Directionality(
+        textDirection: widget.textDirection,
+        child: Builder(
+          builder: (context) {
+            final scrollController = widget.scrollController;
+            final wrappedChild = Material(
+              type: MaterialType.transparency,
+              child: widget.content,
+            );
 
-              if (scrollController != null) {
-                return AnimatedBuilder(
-                  animation: scrollController,
-                  child: wrappedChild,
-                  builder: (context, child) {
-                    return PositionedTooltip2(
-                      // curve: _defaultAnimateCurve,
-                      // duration: _defaultAnimateDuration,
-                      animatedTransitionBuilder:
-                          widget.animatedTransitionBuilder,
-                      margin: widget.margin,
-                      targetSize: targetInformation.size,
-                      target: targetInformation.target,
-                      offset: widget.offset,
-                      preferredDirection: widget.preferredDirection,
-                      offsetToTarget: targetInformation.offsetToTarget,
-                      borderRadius: widget.borderRadius,
-                      tailBaseWidth: widget.tailBaseWidth,
-                      tailLength: widget.tailLength,
-                      tailBuilder: widget.tailBuilder,
-                      backgroundColor:
-                          widget.backgroundColor ?? theme.cardColor,
-                      textDirection: widget.textDirection,
-                      shadow: widget.shadow ?? defaultShadow,
-                      elevation: widget.elevation,
-                      scrollPosition: scrollController.position,
-                      child: child!,
-                    );
-                  },
-                );
-              }
-
-              return PositionedTooltip2(
-                // curve: _defaultAnimateCurve,
-                // duration: _defaultAnimateDuration,
-                animatedTransitionBuilder: widget.animatedTransitionBuilder,
-                margin: widget.margin,
-                targetSize: targetInformation.size,
-                target: targetInformation.target,
-                offset: widget.offset,
-                preferredDirection: widget.preferredDirection,
-                offsetToTarget: targetInformation.offsetToTarget,
-                borderRadius: widget.borderRadius,
-                tailBaseWidth: widget.tailBaseWidth,
-                tailLength: widget.tailLength,
-                tailBuilder: widget.tailBuilder,
-                backgroundColor: widget.backgroundColor ?? theme.cardColor,
-                textDirection: widget.textDirection,
-                shadow: widget.shadow ?? defaultShadow,
-                elevation: widget.elevation,
-                scrollPosition: null,
+            if (scrollController != null) {
+              final animatedBuilder = AnimatedBuilder(
+                animation: scrollController,
                 child: wrappedChild,
+                builder: (context, child) {
+                  return PositionedTooltip2(
+                    // curve: _defaultAnimateCurve,
+                    // duration: _defaultAnimateDuration,
+                    animatedTransitionBuilder:
+                        widget.animatedTransitionBuilder,
+                    margin: widget.margin,
+                    targetSize: targetInformation.size,
+                    target: targetInformation.target,
+                    offset: widget.offset,
+                    preferredDirection: widget.preferredDirection,
+                    offsetToTarget: targetInformation.offsetToTarget,
+                    borderRadius: widget.borderRadius,
+                    tailBaseWidth: widget.tailBaseWidth,
+                    tailLength: widget.tailLength,
+                    tailBuilder: widget.tailBuilder,
+                    backgroundColor:
+                        widget.backgroundColor ?? theme.cardColor,
+                    textDirection: widget.textDirection,
+                    shadow: widget.shadow ?? defaultShadow,
+                    elevation: widget.elevation,
+                    scrollPosition: scrollController.position,
+                    child: child!,
+                  );
+                },
               );
-            },
-          ),
+              return widget.animatedTransitionBuilder.call(
+                context, 
+                _animationController, 
+                animatedBuilder
+              );
+            }
+
+            final animatedBuilder = PositionedTooltip2(
+              // curve: _defaultAnimateCurve,
+              // duration: _defaultAnimateDuration,
+              animatedTransitionBuilder: widget.animatedTransitionBuilder,
+              margin: widget.margin,
+              targetSize: targetInformation.size,
+              target: targetInformation.target,
+              offset: widget.offset,
+              preferredDirection: widget.preferredDirection,
+              offsetToTarget: targetInformation.offsetToTarget,
+              borderRadius: widget.borderRadius,
+              tailBaseWidth: widget.tailBaseWidth,
+              tailLength: widget.tailLength,
+              tailBuilder: widget.tailBuilder,
+              backgroundColor: widget.backgroundColor ?? theme.cardColor,
+              textDirection: widget.textDirection,
+              shadow: widget.shadow ?? defaultShadow,
+              elevation: widget.elevation,
+              scrollPosition: null,
+              child: wrappedChild,
+            );
+
+            return widget.animatedTransitionBuilder.call(
+              context, 
+              _animationController, 
+              animatedBuilder
+            );
+          },
         ),
       ),
     );
