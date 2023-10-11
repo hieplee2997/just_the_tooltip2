@@ -4,9 +4,10 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:just_the_tooltip2/just_the_tooltip.dart';
-import 'package:just_the_tooltip2/src/models/just_the_interface.dart';
 import 'package:just_the_tooltip2/src/models/target_information.dart';
 import 'package:just_the_tooltip2/src/positioned_tooltip.dart';
+
+part 'just_the_tooltip_entry.dart';
 
 typedef ShowTooltip = Future<void> Function({
   bool immediately,
