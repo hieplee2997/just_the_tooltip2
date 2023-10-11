@@ -1,8 +1,8 @@
 part of './just_the_tooltip.dart';
 
 /// A Tooltip widget that delegates to creation and use of the tooltip and
-/// skrim to the outer [JustTheTooltipArea]. This class is useless if not
-/// nested within a [JustTheTooltipArea].
+/// skrim to the outer [JustTheTooltipArea2]. This class is useless if not
+/// nested within a [JustTheTooltipArea2].
 ///
 /// {@macro just_the_tooltip.overlay.constructor}
 class JustTheTooltipEntry extends StatefulWidget implements JustTheInterface2 {
@@ -192,7 +192,7 @@ class _JustTheTooltipEntryState extends JustTheTooltip2State<Widget> {
     final entry = _createEntry();
     final skrim = _createSkrim();
 
-    final tooltipArea = JustTheTooltipArea.of(context);
+    final tooltipArea = JustTheTooltipArea2.of(context);
 
     tooltipArea.setEntries(entry: entry, skrim: skrim);
   }

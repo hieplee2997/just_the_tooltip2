@@ -31,7 +31,7 @@ class _TooltipAreaExamplePageState extends State<TooltipAreaExamplePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text('It goes under me')),
-      body: JustTheTooltipArea(
+      body: JustTheTooltipArea2(
         builder: (context, tooltip, scrim) {
           return Stack(
             fit: StackFit.passthrough,
