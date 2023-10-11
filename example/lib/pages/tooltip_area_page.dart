@@ -42,7 +42,7 @@ class _TooltipAreaExamplePageState extends State<TooltipAreaExamplePage> {
                   10,
                   (index) {
                     if (index == 2 || index == 7) {
-                      return JustTheTooltipEntry(
+                      return JustTheTooltipEntry2(
                         key: Key(index.toString()),
                         scrollController: scrollController,
                         isModal: true,

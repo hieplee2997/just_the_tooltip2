@@ -5,8 +5,8 @@ part of './just_the_tooltip.dart';
 /// nested within a [JustTheTooltipArea2].
 ///
 /// {@macro just_the_tooltip.overlay.constructor}
-class JustTheTooltipEntry extends StatefulWidget implements JustTheInterface2 {
-  const JustTheTooltipEntry({
+class JustTheTooltipEntry2 extends StatefulWidget implements JustTheInterface2 {
+  const JustTheTooltipEntry2({
     super.key,
     required this.content,
     required this.child,
@@ -141,12 +141,12 @@ class JustTheTooltipEntry extends StatefulWidget implements JustTheInterface2 {
   final ScrollController? scrollController;
 
   @override
-  JustTheTooltip2State<Widget> createState() => _JustTheTooltipEntryState();
+  JustTheTooltip2State<Widget> createState() => _JustTheTooltipEntry2State();
 }
 
 // TODO: I think I want notifications instead... I'm really not sure
 // https://stackoverflow.com/a/65854697/8213910
-class _JustTheTooltipEntryState extends JustTheTooltip2State<Widget> {
+class _JustTheTooltipEntry2State extends JustTheTooltip2State<Widget> {
   InheritedTooltipArea2? area;
 
   @override
