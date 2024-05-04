@@ -58,6 +58,7 @@ class JustTheTooltip2 extends StatefulWidget implements JustTheInterface2 {
     this.shadow,
     this.showWhenUnlinked = false,
     this.scrollController,
+    this.preferredDirectionWhenHalfScreen = false,
   }) : super(key: key);
 
   @override
@@ -157,6 +158,9 @@ class JustTheTooltip2 extends StatefulWidget implements JustTheInterface2 {
 
   @override
   final ScrollController? scrollController;
+
+  @override
+  final bool preferredDirectionWhenHalfScreen;
 
   @override
   JustTheTooltip2State<OverlayEntry> createState() =>
@@ -724,6 +728,7 @@ abstract class JustTheTooltip2State<T> extends State<JustTheInterface2>
                     elevation: widget.elevation,
                     scrollPosition: scrollController.position,
                     child: child!,
+                    preferredDirectionWhenHalfScreen: widget.preferredDirectionWhenHalfScreen,
                   );
                 },
               );
@@ -754,6 +759,7 @@ abstract class JustTheTooltip2State<T> extends State<JustTheInterface2>
               elevation: widget.elevation,
               scrollPosition: null,
               child: wrappedChild,
+              preferredDirectionWhenHalfScreen: widget.preferredDirectionWhenHalfScreen,
             );
 
             return widget.animatedTransitionBuilder.call(

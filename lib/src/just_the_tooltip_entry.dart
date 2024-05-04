@@ -142,6 +142,9 @@ class JustTheTooltipEntry2 extends StatefulWidget implements JustTheInterface2 {
 
   @override
   JustTheTooltip2State<Widget> createState() => _JustTheTooltipEntry2State();
+  
+  @override
+  bool get preferredDirectionWhenHalfScreen => false;
 }
 
 // TODO: I think I want notifications instead... I'm really not sure

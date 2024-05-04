@@ -11,6 +11,7 @@ AxisDirection getAxisDirection({
   required double offsetAndTail,
   required EdgeInsets margin,
   required ScrollPosition? scrollPosition,
+  required bool preferredDirectionWhenHalfScreen
 }) {
   switch (preferredDirection) {
     case AxisDirection.left:
@@ -59,6 +60,11 @@ AxisDirection getAxisDirection({
 
     case AxisDirection.up:
     case AxisDirection.down:
+      if (preferredDirectionWhenHalfScreen) {
+        if (target.dy >= size.height / 2) return AxisDirection.up;
+        else return AxisDirection.down;
+      }
+
       final preferAbove = preferredDirection == AxisDirection.up;
       final childAndOffsetHeight = offsetAndTail + childSize.height;
       final targetHeightRadius = targetSize.height / 2;
